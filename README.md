@@ -20,9 +20,9 @@ car name and show again the other cars' pins.
 
 Technical requirements:
 
-+Kotlin or Java (with Kotlin being preferable)
-+minSdkVersion 19
-+Any third party library can be used
+- Kotlin or Java (with Kotlin being preferable)
+- minSdkVersion 19
+- Any third party library can be used
 
 Keep the UI minimal but straightforward, and do not worry about the design, we
 do not have any restrictions here, native UI elements will suffice! If you feel the
