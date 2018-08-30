@@ -1,4 +1,4 @@
-package dev.com.sfilizzola.wunderchallenge.view
+package dev.com.sfilizzola.wunderchallenge.view.activities
 
-class MainActivity {
+class MainActivity : BaseAcitvity() {
 }

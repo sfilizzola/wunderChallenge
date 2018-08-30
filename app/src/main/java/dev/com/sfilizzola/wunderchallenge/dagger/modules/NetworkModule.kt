@@ -2,8 +2,8 @@ package dev.com.sfilizzola.adventurecompanion.dagger.modules
 
 import dagger.Module
 import dagger.Provides
-import dev.com.sfilizzola.adventurecompanion.BuildConfig
-import dev.com.sfilizzola.adventurecompanion.network.NetworkClient
+import dev.com.sfilizzola.wunderchallenge.BuildConfig
+import dev.com.sfilizzola.wunderchallenge.network.NetworkClient
 import io.reactivex.schedulers.Schedulers
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -23,7 +23,7 @@ class NetworkModule {
     @Singleton
     fun provideRetrofit(): Retrofit {
         return Retrofit.Builder()
-                .baseUrl("http://dnd5eapi.co/api/")
+                .baseUrl("https://s3-us-west-2.amazonaws.com/wunderbucket")
                 .client(getHttpClient())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
                 .addConverterFactory(GsonConverterFactory.create())

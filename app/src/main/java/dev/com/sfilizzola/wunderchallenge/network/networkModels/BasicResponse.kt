@@ -1,4 +1,3 @@
 package dev.com.sfilizzola.wunderchallenge.network.networkModels
 
-class BasicResponse {
-}
+data class BasicResponse (var placemarks: ArrayList<BasicLocation>)

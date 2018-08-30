@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Wunder Challenge</string>
+
+
+
+
+    <!-- GENERIC ERROR MESSAGES -->
+    <string name="retry_connection">Internet issues, please try again.</string>
+
 </resources>

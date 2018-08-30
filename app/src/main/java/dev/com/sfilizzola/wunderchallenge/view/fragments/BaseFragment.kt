@@ -1,4 +1,5 @@
 package dev.com.sfilizzola.wunderchallenge.view.fragments
 
-class BaseFragment {
-}
+import dagger.android.support.DaggerFragment
+
+open class BaseFragment : DaggerFragment()
