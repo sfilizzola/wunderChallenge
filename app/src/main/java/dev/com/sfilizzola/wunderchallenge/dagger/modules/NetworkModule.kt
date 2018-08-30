@@ -1,4 +1,4 @@
-package dev.com.sfilizzola.adventurecompanion.dagger.modules
+package dev.com.sfilizzola.wunderchallenge.dagger.modules
 
 import dagger.Module
 import dagger.Provides

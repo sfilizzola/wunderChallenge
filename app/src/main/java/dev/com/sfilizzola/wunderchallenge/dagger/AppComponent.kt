@@ -3,9 +3,9 @@ package dev.com.sfilizzola.wunderchallenge.dagger
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.support.AndroidSupportInjectionModule
-import dev.com.sfilizzola.adventurecompanion.dagger.modules.NetworkModule
-import dev.com.sfilizzola.adventurecompanion.dagger.modules.RepoModule
-import dev.com.sfilizzola.adventurecompanion.dagger.modules.ViewModelModule
+import dev.com.sfilizzola.wunderchallenge.dagger.modules.NetworkModule
+import dev.com.sfilizzola.wunderchallenge.dagger.modules.RepoModule
+import dev.com.sfilizzola.wunderchallenge.dagger.modules.ViewModelModule
 import dev.com.sfilizzola.wunderchallenge.BaseApp
 import dev.com.sfilizzola.wunderchallenge.dagger.modules.ActivityModule
 import dev.com.sfilizzola.wunderchallenge.dagger.modules.DatabaseModule

@@ -1,10 +1,12 @@
 <resources>
     <string name="app_name">Wunder Challenge</string>
 
-
-
+    <!-- MENU ITENS -->
+    <string name="menu_list">Car List</string>
+    <string name="menu_map">Map View</string>
 
     <!-- GENERIC ERROR MESSAGES -->
     <string name="retry_connection">Internet issues, please try again.</string>
+
 
 </resources>
