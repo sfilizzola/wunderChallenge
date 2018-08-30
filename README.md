@@ -3,7 +3,9 @@
 As part of the test assignment we would like to ask you to build an app which
 tackles the everyday problems we face at Wunder. The app should access a
 JSON feed of cars:
+
 ➔ https://s3-us-west-2.amazonaws.com/wunderbucket/locations.json
+
 It should persist them and display the information in two different sections:
 Section 1:
 
@@ -18,9 +20,9 @@ car name and show again the other cars' pins.
 
 Technical requirements:
 
-● Kotlin or Java (with Kotlin being preferable)
-● minSdkVersion 19
-● Any third party library can be used
++Kotlin or Java (with Kotlin being preferable)
++minSdkVersion 19
++Any third party library can be used
 
 Keep the UI minimal but straightforward, and do not worry about the design, we
 do not have any restrictions here, native UI elements will suffice! If you feel the
