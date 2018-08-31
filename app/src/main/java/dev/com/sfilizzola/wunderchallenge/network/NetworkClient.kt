@@ -8,7 +8,7 @@ import retrofit2.http.GET
 
 interface NetworkClient {
 
-    @GET("/locations.json")
+    @GET("locations.json")
     fun getLocationResponse() : Single<BasicResponse>
 
 }

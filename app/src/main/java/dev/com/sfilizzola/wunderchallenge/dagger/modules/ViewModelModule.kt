@@ -15,7 +15,7 @@ abstract class ViewModelModule {
     @Binds
     @IntoMap
     @ViewModelKey(ListFragmentViewModel::class)
-    internal abstract fun bindListFragmentViewModel(mainActivityViewModel: ListFragmentViewModel): ViewModel
+    internal abstract fun bindListFragmentViewModel(listFragmentViewModel: ListFragmentViewModel): ViewModel
 
     @Binds
     internal abstract fun bindAppViewModelFactory(appViewModelFactory: AppViewModelFactory): ViewModelProvider.Factory

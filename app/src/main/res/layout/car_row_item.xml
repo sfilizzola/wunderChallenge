@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="dev.com.sfilizzola.wunderchallenge.viewmodels.CarItemRowViewModel" />
+
+    </data>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:onClick="@{() -> viewModel.onRowClick()}"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="8dp">
+
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <TextView
+                android:id="@+id/car_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:fontFamily="@font/roboto_bold"
+                android:gravity="center_horizontal"
+                android:text="@{viewModel.name}"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="HH-GO8480" />
+
+
+            <TextView
+                android:id="@+id/car_vin"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:fontFamily="@font/roboto_bold"
+                android:gravity="center_horizontal"
+                android:text="@{viewModel.vin}"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/car_name"
+                tools:text="WME4513341K412697" />
+
+
+            <TextView
+                android:id="@+id/car_engine_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="@string/car_engine_label"
+                android:textColor="@android:color/darker_gray"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/car_vin" />
+
+            <TextView
+                android:id="@+id/car_engine_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="@{viewModel.engineType}"
+                android:textColor="@android:color/black"
+                app:layout_constraintEnd_toStartOf="@id/car_fuel_label"
+                app:layout_constraintStart_toEndOf="@id/car_engine_label"
+                app:layout_constraintTop_toTopOf="@id/car_engine_label"
+                tools:text="CE" />
+
+            <TextView
+                android:id="@+id/car_exterior_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="@string/car_exterior_label"
+                android:textColor="@android:color/darker_gray"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/car_engine_label" />
+
+            <TextView
+                android:id="@+id/car_exterior_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="@{viewModel.exterior}"
+                android:textColor="@android:color/black"
+                app:layout_constraintEnd_toStartOf="@id/car_fuel_label"
+                app:layout_constraintStart_toEndOf="@id/car_exterior_label"
+                app:layout_constraintTop_toTopOf="@id/car_exterior_label"
+                tools:text="UNACCEPTABLE" />
+
+            <TextView
+                android:id="@+id/car_interior_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="@string/car_interior_label"
+                android:textColor="@android:color/darker_gray"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/car_exterior_label" />
+
+            <TextView
+                android:id="@+id/car_interior_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="@{viewModel.interior}"
+                android:textColor="@android:color/black"
+                app:layout_constraintEnd_toStartOf="@id/car_fuel_label"
+                app:layout_constraintStart_toEndOf="@id/car_interior_label"
+                app:layout_constraintTop_toTopOf="@id/car_interior_label"
+                tools:text="GOOD" />
+
+            <TextView
+                android:id="@+id/car_address"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/roboto_bold"
+                android:gravity="center_horizontal"
+                android:text="@{viewModel.address}"
+                android:textColor="@android:color/black"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/car_interior_label"
+                tools:text="Grosse Reichenstraße 7, 20457 Hamburg" />
+
+
+            <TextView
+                android:id="@+id/car_fuel_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="@string/car_fuel_label"
+                android:textAllCaps="true"
+                android:textColor="@android:color/black"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toStartOf="@+id/car_fuel_indicator"
+                app:layout_constraintTop_toTopOf="@id/car_interior_label" />
+
+            <ProgressBar
+                android:id="@+id/car_fuel_indicator"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:progress="@{viewModel.fuel}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/car_fuel_label"
+                tools:progress="35" />
+
+
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.v7.widget.CardView>
+
+</layout>
+
+
+    <!-- "address": "Grosse Reichenstraße 7, 20457 Hamburg",
+                "coordinates": [
+                    9.99622,
+                    53.54847,
+                    0
+                ],
+                "engineType": "CE",
+                "exterior": "UNACCEPTABLE",
+                "fuel": 45,
+                "interior": "GOOD",
+                "name": "HH-GO8480",
+                "vin": "WME4513341K412697" -->

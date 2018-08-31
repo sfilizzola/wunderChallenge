@@ -23,7 +23,7 @@ class NetworkModule {
     @Singleton
     fun provideRetrofit(): Retrofit {
         return Retrofit.Builder()
-                .baseUrl("https://s3-us-west-2.amazonaws.com/wunderbucket")
+                .baseUrl("https://s3-us-west-2.amazonaws.com/wunderbucket/")
                 .client(getHttpClient())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
                 .addConverterFactory(GsonConverterFactory.create())

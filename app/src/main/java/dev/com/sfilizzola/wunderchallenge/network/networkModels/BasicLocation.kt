@@ -1,7 +1,7 @@
 package dev.com.sfilizzola.wunderchallenge.network.networkModels
 
 data class BasicLocation (var address:String,
-                          var coordinates: ArrayList<Int>,
+                          var coordinates: ArrayList<Double>,
                           var engineType:String,
                           var exterior:String,
                           var fuel:Int,

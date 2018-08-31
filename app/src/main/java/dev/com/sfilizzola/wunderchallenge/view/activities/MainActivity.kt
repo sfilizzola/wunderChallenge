@@ -7,6 +7,7 @@ import dev.com.sfilizzola.wunderchallenge.R
 import dev.com.sfilizzola.wunderchallenge.databinding.ActivityMainBinding
 import android.support.design.widget.BottomNavigationView
 import android.view.MenuItem
+import dev.com.sfilizzola.wunderchallenge.view.fragments.ListFragment
 
 
 class MainActivity : BaseAcitvity() {
@@ -22,11 +23,16 @@ class MainActivity : BaseAcitvity() {
     }
 
     private fun setUpNavigationBar() {
+        val transaction = supportFragmentManager.beginTransaction()
+
         binding.mainNavigation.setOnNavigationItemSelectedListener( object : BottomNavigationView.OnNavigationItemSelectedListener {
             override fun onNavigationItemSelected(item: MenuItem): Boolean {
                return when(item.itemId){
                    R.id.list_view -> {
-                       //TODO - replace fragment
+                       val fragment = ListFragment()
+                       transaction.replace(R.id.main_content,fragment)
+                       transaction.addToBackStack(null)
+                       transaction.commit()
                        true
                    }
                    R.id.map_view -> {
@@ -38,4 +44,7 @@ class MainActivity : BaseAcitvity() {
 
         })
     }
+
+
+
 }
