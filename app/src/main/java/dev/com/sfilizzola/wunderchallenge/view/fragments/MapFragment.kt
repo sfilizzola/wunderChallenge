@@ -1,5 +1,6 @@
 package dev.com.sfilizzola.wunderchallenge.view.fragments
 
+import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
@@ -12,9 +13,12 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.MarkerOptions
 import dev.com.sfilizzola.wunderchallenge.R
 import dev.com.sfilizzola.wunderchallenge.databinding.FragmentMapBinding
+import dev.com.sfilizzola.wunderchallenge.models.Marker
+import dev.com.sfilizzola.wunderchallenge.view.viewStatus.MapViewStatus
 
 
 import dev.com.sfilizzola.wunderchallenge.viewmodels.MapFragmentViewModel
@@ -44,14 +48,41 @@ class MapFragment : BaseFragment(), OnMapReadyCallback {
         return binding.root
     }
 
-
     override fun onMapReady(googleMap: GoogleMap) {
         currentMap = googleMap
 
-        // Add a marker in Sydney and move the camera
-        val sydney = LatLng(-34.0, 151.0)
-        currentMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        currentMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+        viewModel.getMarkers()
+
+        viewModel.getData().observe(this, Observer{
+            it?.let { result ->
+                when(result) {
+                    is MapViewStatus.Success -> setUpMarkers(it.list())
+                    is MapViewStatus.Error ->  displaySnackBarError()
+                }
+            }
+        })
+
+
+    }
+
+    private fun setUpMarkers(list: List<Marker>) {
+
+        val boundBuilder = LatLngBounds.builder()
+
+        for(item in list){
+            val latLng = LatLng(item.Lat, item.Lng)
+            currentMap.addMarker(MarkerOptions().position(latLng).title(item.title))
+            boundBuilder.include(latLng)
+        }
+
+        val camera = CameraUpdateFactory.newLatLngBounds(boundBuilder.build(), 50)
+        currentMap.moveCamera(camera)
+    }
+
+
+
+    private fun displaySnackBarError() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
 }
