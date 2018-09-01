@@ -15,16 +15,6 @@
     <string name="car_interior_label">Interior:</string>
     <string name="car_name_label">Name:</string>
     <string name="car_vin_label">VIN:</string>
-
-
-
-
-
-    <!--  "engineType": "CE",
-                "exterior": "UNACCEPTABLE",
-                "fuel": 45,
-                "interior": "GOOD",
-                "name": "HH-GO8480",
-                "vin": "WME4513341K412697" -->
+    <string name="title_activity_maps">Map</string>
 
 </resources>

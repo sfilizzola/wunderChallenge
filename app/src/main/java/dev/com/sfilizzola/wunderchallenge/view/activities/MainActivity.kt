@@ -5,9 +5,8 @@ import android.databinding.DataBindingUtil
 import android.os.Bundle
 import dev.com.sfilizzola.wunderchallenge.R
 import dev.com.sfilizzola.wunderchallenge.databinding.ActivityMainBinding
-import android.support.design.widget.BottomNavigationView
-import android.view.MenuItem
 import dev.com.sfilizzola.wunderchallenge.view.fragments.ListFragment
+import dev.com.sfilizzola.wunderchallenge.view.fragments.MapFragment
 
 
 class MainActivity : BaseAcitvity() {
@@ -20,31 +19,38 @@ class MainActivity : BaseAcitvity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         setUpNavigationBar()
+        startListFragment()
     }
 
     private fun setUpNavigationBar() {
-        val transaction = supportFragmentManager.beginTransaction()
 
-        binding.mainNavigation.setOnNavigationItemSelectedListener( object : BottomNavigationView.OnNavigationItemSelectedListener {
-            override fun onNavigationItemSelected(item: MenuItem): Boolean {
-               return when(item.itemId){
-                   R.id.list_view -> {
-                       val fragment = ListFragment()
-                       transaction.replace(R.id.main_content,fragment)
-                       transaction.addToBackStack(null)
-                       transaction.commit()
-                       true
-                   }
-                   R.id.map_view -> {
-                       //TODO - replace fragment
-                       true
-                   } else -> false
-               }
+        binding.mainNavigation.setOnNavigationItemSelectedListener { item ->
+            when(item.itemId){
+                R.id.list_view -> {
+                    startListFragment()
+                    true
+                }
+                R.id.map_view -> {
+                    startMapFragment()
+                    true
+                } else -> false
             }
-
-        })
+        }
     }
 
+    private fun startListFragment(){
+        val transaction = supportFragmentManager.beginTransaction()
+        val fragment = ListFragment()
+        transaction.replace(R.id.main_content,fragment)
+        transaction.addToBackStack(null)
+        transaction.commit()
+    }
 
-
+    private fun startMapFragment(){
+        val transaction = supportFragmentManager.beginTransaction()
+        val fragment = MapFragment()
+        transaction.replace(R.id.main_content,fragment)
+        transaction.addToBackStack(null)
+        transaction.commit()
+    }
 }

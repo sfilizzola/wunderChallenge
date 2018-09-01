@@ -12,7 +12,7 @@ import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
 import javax.inject.Inject
 
-class ListFragmentViewModel @Inject constructor(var repository: PlacemarksRepo) : BaseViewModel(){
+class ListFragmentViewModel @Inject constructor(private var repository: PlacemarksRepo) : BaseViewModel(){
 
     private var data = MutableLiveData<ListViewStatus>()
 
