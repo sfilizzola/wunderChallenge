@@ -1,36 +1,41 @@
-# Wunder Challenge 
+# Wunder Challenge
 
-As part of the test assignment we would like to ask you to build an app which
-tackles the everyday problems we face at Wunder. The app should access a
-JSON feed of cars:
+## First impressions
 
-➔ https://s3-us-west-2.amazonaws.com/wunderbucket/locations.json
+First of all thanks for considering this code, it was very pleasant to make it, and I've learned a lot!
 
-It should persist them and display the information in two different sections:
-Section 1:
+## Architectural decisions
 
-Display all the cars information in a list.
+The App is using MVVM with Databinding, today is the "go-to" architecture for me in Android, is some simples Apps, can be too much. But I think in this case can show things that I know and if the App was made in a simpler way, maybe I don't have ways to show that.
 
-Section 2:
+The main reason for using MVVM is making logic, models and layers of the aplication more testable, together with dependency injection the classes became even more apart from eatch other.
 
-Display all the cars in the map (plus the user's updated location).
-After tapping a car on the map, the others should disappear and the car name
-should be displayed on top of the map pin, tapping again on the car will hide the
-car name and show again the other cars' pins.
+## App structure
 
-Technical requirements:
+Although the app is very simple I've choose to go with a Main Activity and replace tha central content with two fragments, the list and the map view, according with the option selected on a BottonNavigationView.
 
-- Kotlin or Java (with Kotlin being preferable)
-- minSdkVersion 19
-- Any third party library can be used
+## React and LiveData
 
-Keep the UI minimal but straightforward, and do not worry about the design, we
-do not have any restrictions here, native UI elements will suffice! If you feel the
-need to add some cool features to our small app, feel free to do so.
-It will be a big plus if you structure your code using the MVP/MVI/MVVM
-pattern, or any other pattern that you find suitable (and let us know why). Unit
-tests are welcome but are not mandatory.
-When you are ready, please create a repository in Github/Bitbucket, push your
-changes into the repository and share it with us. Feel free to contact us with any
-questions regarding the assignment or the submission process. We would be
-happy to help!
+The main comunication between layers of the app occur using RxJava and LiveData, all the data from "outside the app", Database and Network, goes via a Stream until reach the viewmodel Layer that uses a LiveData to comunicate with the views.
+
+### Why not use RxJava all the way ?
+
+The reason to use LiveData from the ViewModel foward is that LiveData is Lifecycle Aware, meaning that he knows wich state is the Activity and/or Fragment of the user, so that way if something happens is the user layer the Stream of data can act properly with the current conditions of the app, for example when the user pauses the Activity by pressing the home twice.
+
+## Unit tests
+
+As the challenge was reaching to an End all the features implemented was very simple features, so I figured that I will be doing some dumb tests, I consider them, is this case, not important for the test objectives, but I can make them if required.
+
+## Persistance
+
+I have implemented an Offline First Architecture usign Room and Retrofit, if the data is not persisted on local SQLite, I get the data from the network and save it locally.
+
+
+### Foreword
+
+Thanks for reaching here.
+
+Regards,
+
+*Samuel Filizzola*
+
