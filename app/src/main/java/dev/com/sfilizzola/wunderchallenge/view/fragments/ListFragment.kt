@@ -5,6 +5,7 @@ import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
@@ -53,7 +54,10 @@ class ListFragment : BaseFragment(){
     }
 
     private fun displaySnackBarError() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        Snackbar.make(binding.root, R.string.retry_connection, Snackbar.LENGTH_INDEFINITE)
+                .setAction(R.string.retry_text) {
+                    viewModel.getCars()
+                }.show()
     }
 
     override fun onResume() {

@@ -1,10 +1,19 @@
 package dev.com.sfilizzola.wunderchallenge.view.fragments
 
+import android.Manifest
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
+import android.content.Context
+import android.content.Context.LOCATION_SERVICE
+import android.content.pm.PackageManager
 import android.databinding.DataBindingUtil
+import android.location.LocationManager
 import android.os.Bundle
+import android.support.design.widget.Snackbar
+import android.support.v4.app.ActivityCompat
+import android.support.v4.content.ContextCompat
+import android.support.v4.content.ContextCompat.getSystemService
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -43,6 +52,7 @@ class MapFragment : BaseFragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickL
 
     private val boundBuilder = LatLngBounds.builder()
 
+    private lateinit var locationManager:LocationManager
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -53,11 +63,22 @@ class MapFragment : BaseFragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickL
         val mapFragment = childFragmentManager.findFragmentById(R.id.map_fragment) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
+        //start location manager
+        locationManager =  context!!.getSystemService(LOCATION_SERVICE) as LocationManager
+
         return binding.root
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
+
         currentMap = googleMap
+
+        if (ContextCompat.checkSelfPermission(context!!, Manifest.permission.ACCESS_FINE_LOCATION)
+                == PackageManager.PERMISSION_GRANTED) {
+            currentMap.isMyLocationEnabled = true
+            currentMap.uiSettings.isMyLocationButtonEnabled =true
+        }
+
         currentMap.setOnMarkerClickListener(this)
         currentMap.setOnInfoWindowCloseListener(this)
 
@@ -79,9 +100,6 @@ class MapFragment : BaseFragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickL
     }
 
     private fun setUpMarkers(list: List<Pin>) {
-
-
-
 
         for(item in list){
             val latLng = LatLng(item.Lat, item.Lng)
@@ -115,7 +133,6 @@ class MapFragment : BaseFragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickL
         zoomToBounds(boundBuilder.build())
     }
 
-
     private fun zoomToPosition(position:LatLng){
         val camera = CameraUpdateFactory.newLatLngZoom(position, 18.0f)
         currentMap.animateCamera(camera)
@@ -126,10 +143,11 @@ class MapFragment : BaseFragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickL
         currentMap.animateCamera(camera)
     }
 
-
-
     private fun displaySnackBarError() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        Snackbar.make(binding.root, R.string.retry_connection, Snackbar.LENGTH_INDEFINITE)
+                .setAction(R.string.retry_text) {
+                    viewModel.getMarkers()
+                }.show()
     }
 
 

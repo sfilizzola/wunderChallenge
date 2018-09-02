@@ -1,16 +1,20 @@
 package dev.com.sfilizzola.wunderchallenge.view.activities
 
 
+import android.Manifest
 import android.databinding.DataBindingUtil
 import android.os.Bundle
+import android.support.v4.app.ActivityCompat
 import dev.com.sfilizzola.wunderchallenge.R
 import dev.com.sfilizzola.wunderchallenge.databinding.ActivityMainBinding
 import dev.com.sfilizzola.wunderchallenge.view.fragments.ListFragment
 import dev.com.sfilizzola.wunderchallenge.view.fragments.MapFragment
 
 
+
 class MainActivity : BaseAcitvity() {
 
+    private val LOCATION_CODE = 101
 
     private lateinit var binding: ActivityMainBinding
 
@@ -18,8 +22,15 @@ class MainActivity : BaseAcitvity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
+        getUserPermissionForLocation()
         setUpNavigationBar()
         startListFragment()
+    }
+
+    private fun getUserPermissionForLocation() {
+        ActivityCompat.requestPermissions(this,
+                arrayOf( Manifest.permission.ACCESS_FINE_LOCATION),
+                LOCATION_CODE)
     }
 
     private fun setUpNavigationBar() {
