@@ -1,15 +1,15 @@
 package dev.com.sfilizzola.wunderchallenge.view.viewStatus
 
-import dev.com.sfilizzola.wunderchallenge.models.Marker
+import dev.com.sfilizzola.wunderchallenge.models.Pin
 
 sealed class MapViewStatus {
-    data class Success(val list:List<Marker>):MapViewStatus()
+    data class Success(val list:List<Pin>):MapViewStatus()
     data class Error(val error:String?):MapViewStatus()
 
-    fun list():List<Marker>{
+    fun list():List<Pin>{
         return when(this){
             is Success -> this.list
-            else -> ArrayList<Marker>()
+            else -> ArrayList<Pin>()
         }
     }
 
