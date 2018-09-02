@@ -5,6 +5,8 @@ import dagger.Module
 import dagger.Provides
 import dev.com.sfilizzola.wunderchallenge.BaseApp
 import dev.com.sfilizzola.wunderchallenge.database.DatabaseClient
+import dev.com.sfilizzola.wunderchallenge.database.daos.CarDao
+import dev.com.sfilizzola.wunderchallenge.database.daos.PinDao
 
 import javax.inject.Singleton
 
@@ -16,5 +18,15 @@ class DatabaseModule {
     fun provideDatabase(application: BaseApp): DatabaseClient {
         return Room.databaseBuilder(application, DatabaseClient::class.java, "wunderChallenge-db")
                 .build()
+    }
+
+    @Provides @Singleton
+    fun provideCarDao(databaseClient: DatabaseClient): CarDao {
+        return databaseClient.carDao()
+    }
+
+    @Provides @Singleton
+    fun providePinDao(databaseClient: DatabaseClient): PinDao {
+        return databaseClient.pinDao()
     }
 }

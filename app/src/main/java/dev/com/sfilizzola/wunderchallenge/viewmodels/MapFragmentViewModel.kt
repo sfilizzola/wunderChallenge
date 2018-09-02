@@ -4,14 +4,14 @@ import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.databinding.ObservableInt
 import android.view.View
-import dev.com.sfilizzola.wunderchallenge.repos.PlacemarksRepo
+import dev.com.sfilizzola.wunderchallenge.repos.DataRepository
 import dev.com.sfilizzola.wunderchallenge.view.viewStatus.MapViewStatus
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
 import javax.inject.Inject
 
-class MapFragmentViewModel @Inject constructor(private var repository: PlacemarksRepo) : BaseViewModel() {
+class MapFragmentViewModel @Inject constructor(private var repository: DataRepository) : BaseViewModel() {
 
     private var data = MutableLiveData<MapViewStatus>()
 
