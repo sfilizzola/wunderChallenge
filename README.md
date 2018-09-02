@@ -24,7 +24,15 @@ The reason to use LiveData from the ViewModel foward is that LiveData is Lifecyc
 
 ## Unit tests
 
-As the challenge was reaching to an End all the features implemented was very simple features, so I figured that I will be doing some dumb tests, I consider them, is this case, not important for the test objectives, but I can make them if required.
+As the challenge was reaching to an End all the features implemented were very simple features, so I figured out that I will be doing some dumb tests. I consider them, is this case, not important for the test objectives, but I can make them if required.
+
+Some examples of tests that can be done in the app are:
+
+- Check if all the resources are beeing called on CarItemRowViewmodel
+- Check if the JSON on network matches the model objects.
+- Check if the content on DataRepository is right.
+
+I thik unit tests are crutial for the quality of professional apps, but I don't see any reasons for doing them on this challlenge.
 
 ## Persistance
 
