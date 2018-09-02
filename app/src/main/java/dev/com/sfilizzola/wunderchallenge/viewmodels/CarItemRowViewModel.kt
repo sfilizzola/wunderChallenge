@@ -25,8 +25,4 @@ class CarItemRowViewModel constructor(private val item:Car): BaseViewModel() {
 
     @Bindable
     fun getFuel():Int = item.fuel
-
-    fun onRowClick(){
-
-    }
 }
