@@ -11,7 +11,8 @@ class Converter {
         val splitValue = value.split("/")
 
         for (strNumber in splitValue) {
-            arrayList.add(strNumber.toDouble())
+            if (strNumber.isNotEmpty())
+                arrayList.add(strNumber.toDouble())
         }
         return arrayList
     }

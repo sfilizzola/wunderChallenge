@@ -1,11 +1,8 @@
 package dev.com.sfilizzola.wunderchallenge.database.daos
 
-import android.arch.persistence.room.Dao
-import android.arch.persistence.room.Query
+import android.arch.persistence.room.*
 import dev.com.sfilizzola.wunderchallenge.models.Car
 import io.reactivex.Single
-import android.arch.persistence.room.Delete
-import android.arch.persistence.room.Insert
 
 
 @Dao
@@ -14,6 +11,7 @@ interface CarDao{
     @Query("SELECT * FROM cars")
     fun getAllCars():Single<List<Car>>
 
+    @Transaction
     @Insert
     fun insertAll(cars:List<Car>)
 
